@@ -279,26 +279,26 @@ window.addEventListener('load', () => {
     const rightButton = document.getElementById('right');
     const jumpButton = document.getElementById('jump');
 
-    leftButton.addEventListener('mousedown', () => {
+    leftButton.addEventListener('click', () => {
         input.keys.add('ArrowLeft');
     });
-    leftButton.addEventListener('mouseup', () => {
+    leftButton.addEventListener('click', () => {
         input.keys.delete('ArrowLeft');
     });
 
-    rightButton.addEventListener('mousedown', () => {
+    rightButton.addEventListener('click', () => {
         input.keys.add('ArrowRight');
     });
-    rightButton.addEventListener('mouseup', () => {
+    rightButton.addEventListener('click', () => {
         input.keys.delete('ArrowRight');
     });
 
-    jumpButton.addEventListener('mousedown', () => {
+    jumpButton.addEventListener('click', () => {
         if (player.onGround()) {
             input.keys.add('ArrowUp');
         }
     });
-    jumpButton.addEventListener('mouseup', () => {
+    jumpButton.addEventListener('click', () => {
         input.keys.delete('ArrowUp');
     });
 
