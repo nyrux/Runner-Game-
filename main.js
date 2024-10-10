@@ -26,7 +26,6 @@ window.addEventListener('load', () => {
         }
     }
 
-
     const input = new InputHandler();
     let gameOver = false;
     let score = 0;
@@ -274,5 +273,34 @@ window.addEventListener('load', () => {
             requestAnimationFrame(animate);
         }
     }
+
+    // Control buttons
+    const leftButton = document.getElementById('left');
+    const rightButton = document.getElementById('right');
+    const jumpButton = document.getElementById('jump');
+
+    leftButton.addEventListener('mousedown', () => {
+        input.keys.add('ArrowLeft');
+    });
+    leftButton.addEventListener('mouseup', () => {
+        input.keys.delete('ArrowLeft');
+    });
+
+    rightButton.addEventListener('mousedown', () => {
+        input.keys.add('ArrowRight');
+    });
+    rightButton.addEventListener('mouseup', () => {
+        input.keys.delete('ArrowRight');
+    });
+
+    jumpButton.addEventListener('mousedown', () => {
+        if (player.onGround()) {
+            input.keys.add('ArrowUp');
+        }
+    });
+    jumpButton.addEventListener('mouseup', () => {
+        input.keys.delete('ArrowUp');
+    });
+
     animate(0);
 });
