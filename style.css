@@ -1,0 +1,14 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.canvas{
+    height: 100vh;
+    width: 100vw;
+    background-color: #000;
+    display: block;
+}
+.asset{
+    display: none;
+}
