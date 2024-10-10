@@ -279,28 +279,45 @@ window.addEventListener('load', () => {
     const rightButton = document.getElementById('right');
     const jumpButton = document.getElementById('jump');
 
-    leftButton.addEventListener('click', () => {
+    // Track button states
+    const buttonStates = {
+        left: false,
+        right: false,
+        jump: false,
+    };
+
+    leftButton.addEventListener('touchstart', () => {
+        buttonStates.left = true;
         input.keys.add('ArrowLeft');
     });
-    leftButton.addEventListener('click', () => {
+    leftButton.addEventListener('touchend', () => {
+        buttonStates.left = false;
         input.keys.delete('ArrowLeft');
     });
 
-    rightButton.addEventListener('click', () => {
+    rightButton.addEventListener('touchstart', () => {
+        buttonStates.right = true;
         input.keys.add('ArrowRight');
     });
-    rightButton.addEventListener('click', () => {
+    rightButton.addEventListener('touchend', () => {
+        buttonStates.right = false;
         input.keys.delete('ArrowRight');
     });
 
-    jumpButton.addEventListener('click', () => {
+    jumpButton.addEventListener('touchstart', () => {
         if (player.onGround()) {
+            buttonStates.jump = true;
             input.keys.add('ArrowUp');
         }
     });
-    jumpButton.addEventListener('click', () => {
+    jumpButton.addEventListener('touchend', () => {
+        buttonStates.jump = false;
         input.keys.delete('ArrowUp');
     });
+
+    // Prevent default touch behavior
+    const preventDefault = (event) => event.preventDefault();
+    document.body.addEventListener('touchmove', preventDefault, { passive: false });
 
     animate(0);
 });
